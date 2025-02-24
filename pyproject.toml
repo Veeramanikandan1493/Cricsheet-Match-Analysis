@@ -1,0 +1,132 @@
+[tool.ruff]
+# Exclude commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+# Matches Black's settings.
+line-length = 88
+indent-width = 4
+
+# Target Python version
+target-version = "py312"
+
+[tool.ruff.lint]
+# Enable linting rules
+select = [
+    "E4", # Pycodestyle (errors)
+    "E7", # Pycodestyle (errors)
+    "E9", # Pycodestyle (errors)
+    "F", # Pyflakes (errors)
+    "W", # Pycodestyle (warnings)
+    "I", # Import sorting and management
+    "B", # Bugbear (common mistakes)
+    "D", # Pydocstyle (docstrings)
+    "S", # Bandit (security checks)
+    "C90", # McCabe complexity (complexity)
+    "T", # Type annotation checks
+    "R", # Refactoring suggestions
+]
+
+# Ignore conflicting or unnecessary rules (add specific codes as needed).
+ignore = [
+    "C901", # Too complex
+    "D100", # Missing docstring in public module
+    "D101", # Missing docstring in public class
+    "D102", # Missing docstring in public method
+    "D103", # Missing docstring in public function
+    "D104", # Missing docstring in public package
+    "D105", # Missing docstring in magic method
+    "D106", # Missing docstring in public nested class
+    "D107", # Missing docstring in __init__
+    "S113", # Probable use of `requests` call without timeout
+
+    "D203", # Ignore one-blank-line-before-class
+    "D212", # Multi-line docstring first line conflicts with Google style.
+    "D213", # Multi-line docstring second line conflicts with Google style.
+    "D413", # Ignore missing blank line after the last section.
+]
+
+# Enable autofix for all fixable rules.
+fixable = ["ALL"]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+# Enforce Black-compatible formatting.
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+# Auto-format code examples in docstrings (disabled by default).
+docstring-code-format = false
+docstring-code-line-length = "dynamic"  # Effective only if `docstring-code-format` is true.
+
+[tool.black]
+line-length = 88  # Matches Ruff's line-length
+target-version = ["py312"]  # Matches Ruff's target Python version
+skip-string-normalization = false  # Ensure double quotes are enforced, like Ruff
+exclude = '''
+/(
+    \.bzr
+  | \.direnv
+  | \.eggs
+  | \.git
+  | \.git-rewrite
+  | \.hg
+  | \.ipynb_checkpoints
+  | \.mypy_cache
+  | \.nox
+  | \.pants\.d
+  | \.pyenv
+  | \.pytest_cache
+  | \.pytype
+  | \.ruff_cache
+  | \.svn
+  | \.tox
+  | \.venv
+  | \.vscode
+  | __pycache__
+  | __pypackages__
+  | _build
+  | buck-out
+  | build
+  | dist
+  | node_modules
+  | site-packages
+  | venv
+)/
+'''
+
+[tool.isort]
+profile = "black"  # Match Black's import style.
+line-length = 88
+combine-as-imports = true  # Combine multiple imports from the same module.
+known_third_party = ["numpy", "pandas"]  # Add known third-party libraries as needed.

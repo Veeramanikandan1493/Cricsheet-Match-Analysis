@@ -1,0 +1,10 @@
+[downloads]
+tests_json = "tests_json.zip"
+odis_json = "odis_json.zip"
+t20s_json = "t20s_json.zip"
+
+[urls]
+cricsheet_matches = "https://cricsheet.org/matches/"
+
+[db]
+connection_string = "mysql+pymysql://root:ard5050@localhost/cricsheet_db"
